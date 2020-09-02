@@ -27,6 +27,8 @@
 # @param config_file_mode [String] The unix permissions mode set on configuration files (default: 0644)
 # @param purge_conf_dir [Boolean] Should files in the input configuration directory not managed by puppet be automatically purged
 # @param http [Hash] A hash of the http section of configuration
+# @param cloud_id [String] Will be converted to YAML for the optional cloud.id of the configuration (see documentation, and above)
+# @param cloud_auth [String] Will be converted to YAML for the optional cloud.auth of the configuration (see documentation, and above)
 # @param outputs [Hash] Will be converted to YAML for the required outputs section of the configuration (see documentation, and above)
 # @param shipper [Hash] Will be converted to YAML to create the optional shipper section of the filebeat config (see documentation)
 # @param logging [Hash] Will be converted to YAML to create the optional logging section of the filebeat config (see documentation)
@@ -73,6 +75,8 @@ class filebeat (
   String  $modules_dir                                                = $filebeat::params::modules_dir,
   Boolean $enable_conf_modules                                        = $filebeat::params::enable_conf_modules,
   Hash    $http                                                       = $filebeat::params::http,
+  Optional[String]  $cloud_id                                         = $filebeat::params::cloud_id,
+  Optional[String]  $cloud_auth                                       = $filebeat::params::cloud_auth,
   Hash    $outputs                                                    = $filebeat::params::outputs,
   Hash    $shipper                                                    = $filebeat::params::shipper,
   Hash    $logging                                                    = $filebeat::params::logging,
